@@ -3,7 +3,7 @@ node {
  
   stage('Preparation') { // for display purposes
      // Get some code from a GitHub repository
-     git 'https://github.com/johndavid93/soccer1.git'
+     git 'https://github.com/johndavid93/prueba_UCD.git'
   
             } 
  stage('DEPLOY_UCD') {
