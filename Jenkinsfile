@@ -11,7 +11,7 @@ node {
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
 
 // componentName: define el nombre del (nuevo) componente en IBM UrbanCode Deploy.
-            componentName: 'Jenkins',
+            componentName: 'John',
 
 // createComponent: define un nuevo componente para crear.
             createComponent: [
