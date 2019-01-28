@@ -4,7 +4,7 @@ node {
    step([$class: 'UCDeployPublisher',
 
 // siteName: El nombre del servidor de IBM UrbanCode Deploy configurado en la página Configurar sistema de Jenkins.
-        siteName: 'local',
+        siteName: 'UCD_DEPLOY',
 
 // Especifique acciones para realizar contra un solo componente.
         component: [
