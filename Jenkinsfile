@@ -1,4 +1,10 @@
-node {
+node {  
+  stage('Preparation') { // for display purposes
+     // Get some code from a GitHub repository
+     git 'https://github.com/johndavid93/impor1.git
+  }
+
+        stage('Desplegar en UCD'){
 
 // clase: define el plugin Pipeline para definir. El nombre de clase del complemento UCD Jenkins Pipeline es UCDeployPublisher
    step([$class: 'UCDeployPublisher',
@@ -49,5 +55,6 @@ node {
         ]
     ])
 }
-   
+     }
+ 
 
