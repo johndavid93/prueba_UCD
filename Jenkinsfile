@@ -1,32 +1,6 @@
 node {
    step([$class: 'UCDeployPublisher',
         siteName: 'local',
-        component: [
-            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-            componentName: 'Jenkins',
-            createComponent: [
-                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
-                componentTemplate: '',
-                componentApplication: 'Jenkins'
-            ],
-            delivery: [
-                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
-                pushVersion: '${BUILD_NUMBER}',
-                baseDir: 'jobs\\test-ucd\\workspace\\build\\distributions',
-                fileIncludePatterns: '*.zip',
-                fileExcludePatterns: '',
-                pushProperties: 'jenkins.server=Local\njenkins.reviewed=false',
-                pushDescription: 'Pushed from Jenkins'
-            ]
-        ]
-    ])
-
-   step([$class: 'UCDeployPublisher',
-        siteName: 'local',
-        component: [
-            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-            componentName: 'Jenkins'
-        ],
         deploy: [
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
             deployApp: 'Jenkins',
@@ -38,25 +12,6 @@ node {
             ],
             deployVersions: 'Jenkins:${BUILD_NUMBER}',
             deployOnlyChanged: false
-        ]
-    ])
- step([$class: 'UCDeployPublisher',
-        siteName: 'local',
-        component: [
-            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-            componentName: 'Jenkins',
-            createComponent: [
-                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
-                componentTemplate: '',
-                componentApplication: 'Local'
-            ],
-            delivery: [
-                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Pull',
-                pullProperties: 'FileSystemImportProperties/name=${BUILD_NUMBER}\nFileSystemImportProperties/description=Pushed from Jenkins',
-                pullSourceType: 'File System',
-                pullSourceProperties: 'FileSystemComponentProperties/basePath=C:\\Test',
-                pullIncremental: false
-            ]
         ]
     ])
 }
