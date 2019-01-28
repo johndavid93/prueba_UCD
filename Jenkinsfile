@@ -53,53 +53,43 @@ pipeline {
             }
         } 
  
-  stage('UCD') {
+             } 
+ stage('DEPLOY_UCD') {
+            steps {
+                echo "[EXEC] - Construyendo script de despliegue"
+                //writeFile file: 'deploy.sh', text: "mqsideploy IIBDESA -e SVR_AFP -a ${PROJECT}.bar -w 1200;"
+                echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
+                war warFile: "${soccer-1.0}.war", glob: 'dist/**/*, ScriptDeploy/**/*'
 
-   step([$class: 'UCDeployPublisher',
-        siteName: 'local',
-        component: [
-            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-            componentName: 'Jenkins',
-        ],
+                step([
+                        $class:'UCDeployPublisher',
+                        siteName :"${URBAN_PRD_APP}",
+                        component: [
+                        $class:'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
+                            componentName:"${soccer-1.0}",
+                                createComponent: [
 
-// implementar: inicia automáticamente un proceso de implementación en una importación exitosa.
-        deploy: [
-            $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
+                                        $class:'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
+                                        componentTemplate:'TEMPLATE-PORTAL-FRONT-WAR',
+                                        componentApplication:'Fidaval'
+                                ],
 
-// deployApp, deployEnv y deployProc: la aplicación, el entorno y el proceso de aplicación que se ejecutarán.
-            deployApp: 'Jenkins',
-            deployEnv: 'Test',
-            deployProc: 'Deploy Jenkins',
+                                delivery:[
 
-// deployReqProps: Especifique las propiedades del proceso de la aplicación.
-            deployReqProps: 'AppProcessProp1=Value1\nAppProcessProp2=Value2',
+                                        $class:'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
+                                        pushVersion:"1.${BUILD_ID}",
+                                        baseDir:"${workspace}",
+                                        fileIncludePatterns: "${FILE_WAR_PATTERN}",
+                                        fileExcludePatterns: '',
+                                        pushProperties     : "war-file-name=soccer-1.0",
+                                        pushDescription    : 'Pushed from mpipeline-ppopular-backend Jenkins Job'
+                                ]
+                        ]
+                ])
 
-// createProcess: Si el proceso de la aplicación no existe, esta especificación creará una.
-            createProcess: [
-                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ProcessHelper$CreateProcessBlock',
-
-// processComponent: especifique un proceso de un solo componente para inicializar el nuevo proceso de aplicación. Creará un solo paso Importar componente en un proceso de solicitud basado en el componente especificado anteriormente.
-                processComponent: 'Deploy'
-            ],
-
-// deployVersions: Especifique qué versiones implementar. Sintaxis: COMPONENTE: VERSION. Separe el múltiplo con un nuevo carácter de línea (\ n).
-            deployVersions: 'Jenkins:${BUILD_NUMBER}',
-
-// deployOnlyChanged: especifique que solo se implemente en versiones modificadas.
-            deployOnlyChanged: false,
-
-// createSnapshot: crea una instantánea del entorno de implementación. 
-// Si deployWithSnapshot es verdadero, la instantánea se creará primero y se usará para la implementación. 
-// Además, si deployWithSnapshot es verdadero, las Versiones de implementación en el bloque de implementación se agregarán a la nueva instantánea, en lugar de usarse para la implementación.
-            createSnapshot: [
-               $class:'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$CreateSnapshotBlock',
-                snapshotName: 'NameExample',
-                deployWithSnapshot: false
-            ]
-        ]
-    ])
+ 
 }
-
+    
 }
 }
 
