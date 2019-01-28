@@ -21,7 +21,7 @@ node {
                 componentTemplate: '',
 
 // componentApplication: el nombre de una aplicación a la que se agrega el componente.
-                componentApplication: 'john'
+                componentApplication: 'Jenkins'
             ],
 
 // entrega: Realizar una importación de la versión del componente.
