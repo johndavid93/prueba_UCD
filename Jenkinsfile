@@ -21,7 +21,7 @@ node {
                 componentTemplate: '',
 
 // componentApplication: el nombre de una aplicación a la que se agrega el componente.
-                componentApplication: 'Jenkins'
+                componentApplication: 'john'
             ],
 
 // entrega: Realizar una importación de la versión del componente.
@@ -41,10 +41,10 @@ node {
                 fileExcludePatterns: '',
 
 // pushProperties: Asigna propiedades a la nueva versión del componente. Sintaxis: KEY = VALUE separado por nuevas líneas.
-                pushProperties: 'jenkins.server=Local\njenkins.reviewed=false',
+                pushProperties: '',
 
 // pushDescription: Descripción para asignar a la versión del componente.
-                pushDescription: 'Pushed from Jenkins'
+                pushDescription: ''
             ]
         ]
     ])
