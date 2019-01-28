@@ -53,7 +53,6 @@ pipeline {
             }
         } 
  
-             } 
  stage('DEPLOY_UCD') {
             steps {
                 echo "[EXEC] - Construyendo script de despliegue"
