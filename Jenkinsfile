@@ -54,6 +54,7 @@ node {
                 pushDescription: ''
    ]
                  ]
+            ])
                  /////////////Desplegar componente
                  deploy: [
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
@@ -111,7 +112,7 @@ node {
          ]
          
         
-           ])
+        
 }
      }
  
