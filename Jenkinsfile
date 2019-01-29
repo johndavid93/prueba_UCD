@@ -89,7 +89,6 @@ node {
                 deployWithSnapshot: false
             ]
         ]
-    ])
 }
      }
  
