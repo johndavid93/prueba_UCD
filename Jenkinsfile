@@ -35,7 +35,7 @@ node {
                 $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
 
 // pushVersion: Nombre para asignar la versión del componente. Jenkins resuelve BUILD_NAME.
-                pushVersion: '${BUILD_NUMBER}',
+                pushVersion: '1.${BUILD_NUMBER}',
 
 // baseDir: el directorio base que contiene los artefactos de compilación.
                     baseDir:  "${workspace}",
