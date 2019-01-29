@@ -54,7 +54,8 @@ node {
                 pushDescription: ''
             ]
         ]
-    ])
+ 
+                 /////////////Desplegar componente
                  deploy: [
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
 
@@ -89,6 +90,25 @@ node {
                 deployWithSnapshot: false
             ]
         ]
+                 /////////////////Importación de la versión del disparador
+                 
+                   delivery: [
+                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Pull',
+
+// pullProperties Propiedades para dar a cada versión del componente. Sintaxis: PLUGINComponentProperties / PROPERTY = VALUE. Separe cada definición de propiedad con un nuevo carácter de línea (\ n).
+                pullProperties: 'FileSystemImportProperties/name=${BUILD_NUMBER}\nFileSystemImportProperties/description=Pushed from Jenkins',
+
+// pullSourceType: el nombre de la configuración de origen.
+                pullSourceType: 'File System',
+
+// pullSourceProperties: propiedades específicas de la configuración de origen especificada. Sintaxis: PLUGINComponentProperties / PROPERTY = VALUE. Separe cada definición de propiedad con un nuevo carácter de línea (\ n).
+                pullSourceProperties: 'FileSystemComponentProperties/basePath=C:\\Test',
+
+// pushIncremental: Las importaciones de IBM UrbanCode Deploy solo importarán los cambios de la versión anterior.
+                pushIncremental: false
+            ]
+        ]
+           ])
 }
      }
  
