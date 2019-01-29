@@ -56,6 +56,12 @@ node {
                  ]
             ])
                  /////////////Desplegar componente
+                  step([$class: 'UCDeployPublisher',
+        siteName: 'UCD_DEPLOY',
+        component: [
+            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
+            componentName: '',
+        ],
                  deploy: [
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
 
@@ -90,9 +96,21 @@ node {
                 deployWithSnapshot: false
                       ]
                           ]
+                        ])
        
                  /////////////////Importación de la versión del disparador
-                 
+                  step([$class: 'UCDeployPublisher',
+        siteName: 'UCD_DEPLOY',
+
+// Crear un nuevo componente.
+        component: [
+            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
+            componentName: '',
+            createComponent: [
+                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
+                componentTemplate: '',
+                componentApplication: ''
+            ],
                    delivery: [
                 $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Pull',
 
@@ -107,12 +125,9 @@ node {
 
 // pushIncremental: Las importaciones de IBM UrbanCode Deploy solo importarán los cambios de la versión anterior.
                 pushIncremental: false
-           
-         
+                  
          ]
-         
-        
-        
+  ]        
 }
      }
  
