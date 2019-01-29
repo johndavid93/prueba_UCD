@@ -55,6 +55,7 @@ node {
    ]
                  ]
             ])
+                   /*
                  /////////////Desplegar componente
                   step([$class: 'UCDeployPublisher',
         siteName: 'UCD_DEPLOY',
@@ -90,15 +91,16 @@ node {
 // createSnapshot: crea una instantánea del entorno de implementación. 
 // Si deployWithSnapshot es verdadero, la instantánea se creará primero y se usará para la implementación. 
 // Además, si deployWithSnapshot es verdadero, las Versiones de implementación en el bloque de implementación se agregarán a la nueva instantánea, en lugar de usarse para la implementación.
-           /*
+         
                           createSnapshot: [
                $class:'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$CreateSnapshotBlock',
                 snapshotName: '',
                 deployWithSnapshot: false
                       ]
-                      */
+                      
                           ]
                         ])
+                        */
      /*
                  /////////////////Importación de la versión del disparador
                   step([$class: 'UCDeployPublisher',
