@@ -38,7 +38,7 @@ node {
                 pushVersion: '${BUILD_NUMBER}',
 
 // baseDir: el directorio base que contiene los artefactos de compilación.
-                baseDir: '${extWORKSPACE}',
+                baseDir: '/var/lib/jenkins/workspace/UCD_Jenkinsfile',
 
 // fileIncludePatterns: Regex que define qué archivos incluir.
                 fileIncludePatterns: '**/*',
