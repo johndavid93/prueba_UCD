@@ -97,7 +97,7 @@ node {
                       ]
                           ]
                         ])
-       
+     /*
                  /////////////////Importación de la versión del disparador
                   step([$class: 'UCDeployPublisher',
         siteName: 'UCD_DEPLOY',
@@ -129,6 +129,7 @@ node {
          ]
   ]    
                         ])
+                 */
 }
      }
  
