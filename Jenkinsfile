@@ -60,7 +60,7 @@ node {
         siteName: 'UCD_DEPLOY',
         component: [
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-            componentName: 'JD',
+            componentName: '',
         ],
                  deploy: [
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
@@ -92,7 +92,7 @@ node {
 // Además, si deployWithSnapshot es verdadero, las Versiones de implementación en el bloque de implementación se agregarán a la nueva instantánea, en lugar de usarse para la implementación.
             createSnapshot: [
                $class:'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$CreateSnapshotBlock',
-                snapshotName: 'NameExample',
+                snapshotName: '',
                 deployWithSnapshot: false
                       ]
                           ]
