@@ -52,9 +52,7 @@ node {
 
 // pushDescription: Descripción para asignar a la versión del componente.
                 pushDescription: ''
-            ]
-        ]
- 
+  
                  /////////////Desplegar componente
                  deploy: [
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
@@ -88,8 +86,7 @@ node {
                $class:'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$CreateSnapshotBlock',
                 snapshotName: 'NameExample',
                 deployWithSnapshot: false
-            ]
-        ]
+       
                  /////////////////Importación de la versión del disparador
                  
                    delivery: [
@@ -107,6 +104,10 @@ node {
 // pushIncremental: Las importaciones de IBM UrbanCode Deploy solo importarán los cambios de la versión anterior.
                 pushIncremental: false
             ]
+        ]
+                           ]
+        ]
+                      ]
         ]
            ])
 }
