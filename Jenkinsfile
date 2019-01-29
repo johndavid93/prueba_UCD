@@ -3,7 +3,7 @@ node {
                steps{
 		git poll: true, url: 'https://github.com/johndavid93/prueba_UCD.git'
                }
-   
+	  }
 
         stage('Desplegar en UCD'){
 
