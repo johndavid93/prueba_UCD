@@ -78,7 +78,7 @@ node {
                 $class: 'com.urbancode.jenkins.plugins.ucdeploy.ProcessHelper$CreateProcessBlock',
 
 // processComponent: especifique un proceso de un solo componente para inicializar el nuevo proceso de aplicación. Creará un solo paso Importar componente en un proceso de solicitud basado en el componente especificado anteriormente.
-                processComponent: ''
+                processComponent: 'JD'
             ],
 
 // deployVersions: Especifique qué versiones implementar. Sintaxis: COMPONENTE: VERSION. Separe el múltiplo con un nuevo carácter de línea (\ n).
@@ -90,11 +90,13 @@ node {
 // createSnapshot: crea una instantánea del entorno de implementación. 
 // Si deployWithSnapshot es verdadero, la instantánea se creará primero y se usará para la implementación. 
 // Además, si deployWithSnapshot es verdadero, las Versiones de implementación en el bloque de implementación se agregarán a la nueva instantánea, en lugar de usarse para la implementación.
-            createSnapshot: [
+           /*
+                          createSnapshot: [
                $class:'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$CreateSnapshotBlock',
                 snapshotName: '',
                 deployWithSnapshot: false
                       ]
+                      */
                           ]
                         ])
      /*
