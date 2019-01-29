@@ -68,7 +68,7 @@ node {
 // deployApp, deployEnv y deployProc: la aplicación, el entorno y el proceso de aplicación que se ejecutarán.
             deployApp: '',
             deployEnv: '',
-            deployProc: 'HOLA',
+            deployProc: '',
 
 // deployReqProps: Especifique las propiedades del proceso de la aplicación.
             deployReqProps: 'AppProcessProp1=Value1\nAppProcessProp2=Value2',
@@ -78,7 +78,7 @@ node {
                 $class: 'com.urbancode.jenkins.plugins.ucdeploy.ProcessHelper$CreateProcessBlock',
 
 // processComponent: especifique un proceso de un solo componente para inicializar el nuevo proceso de aplicación. Creará un solo paso Importar componente en un proceso de solicitud basado en el componente especificado anteriormente.
-                processComponent: 'HOLA'
+                processComponent: ''
             ],
 
 // deployVersions: Especifique qué versiones implementar. Sintaxis: COMPONENTE: VERSION. Separe el múltiplo con un nuevo carácter de línea (\ n).
